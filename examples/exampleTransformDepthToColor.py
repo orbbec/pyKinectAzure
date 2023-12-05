@@ -29,7 +29,10 @@ if __name__ == "__main__":
 		# Get the colored depth
 		ret_depth, transformed_colored_depth_image = capture.get_transformed_colored_depth_image()
 
-		if not ret_color or not ret_depth:
+		if  ret_color is None or ret_depth is None:
+			continue
+
+		if transformed_colored_depth_image is None:
 			continue
 
 		# Combine both images
