@@ -1,4 +1,8 @@
 # pyKinectAzure
+Notes:
+This repository fork from https://github.com/ibaiGorordo/pyKinectAzure . Simply replace the  Orbbec SDK K4a Wrapper libraries,This will allow you to use Orbbec Femto Mega and Femto Bolt just like Azure Kinect, without needing to change any Python interfaces.
+
+
 [![PyPI](https://img.shields.io/pypi/v/pykinect-azure?color=2BAF2B)](https://pypi.org/project/pykinect-azure/)
 
 ![Azure kinect color and depth combination](https://github.com/ibaiGorordo/pyKinectAzure/blob/master/doc/images/outputImage.jpg)
@@ -14,7 +18,7 @@ Part of the ideas in this repository are taken from following repositories:
 The objective of this repository is to combine the strong points of both repositories by creating a easy to use library that allows the use of most of the functions of the Kinect Azure. Also, to create sample programs to showcase the uses of the library
 
 ## Prerequisites
-* [Azure-Kinect-Sensor-SDK](https://github.com/microsoft/Azure-Kinect-Sensor-SDK): required to build this library.
+* [Orbbec SDK K4a Wrapper](/orbbecK4aWrapper/readme.md): Replace the corresponding libraries of Azure Kinect Sensor SDK with the libraries in the K4a Wrapper directory.
   To use the SDK, refer to the installation instructions [here](https://github.com/microsoft/Azure-Kinect-Sensor-SDK).
 * **ctypes**: required to read the library.
 * **numpy**: required for the matrix calculations
@@ -29,11 +33,11 @@ pip install pykinect_azure
 
 * The library has **been tested in Windows 10 and Ubuntu 20.04** with the Kinect Azure SDK 1.4.0 and 1.4.1, it should also work with other operating systems.
 
-  - **Windows:** When using the pyKinectAzure class, it requires the **path to the k4a.dll module**, make sure that the path is the correct one for your Kinect Azure SDK version. By default the path (**module_path**) is set to  ```C:\\Program Files\\Azure Kinect SDK v1.4.0\\sdk\\windows-desktop\\amd64\\release\\bin\\k4a.dll```.
+  - **Windows:** When using the pyKinectAzure class, it requires the **path to the k4a.dll module**, make sure that the path is the correct one for your Orbbec SDK K4a Wrapper version.  the path (**module_path**) is set to Orbbec SDK K4a Wrapper windows lib path. For Example  ```C:\\Program Files\\Azure Kinect SDK v1.4.0\\sdk\\windows-desktop\\amd64\\release\\bin\\k4a.dll```.
 
-  - **Linux:** When using the pyKinectAzure class, it requires the **path to the k4a.so module**, make sure that the path is the correct one for your Kinect Azure SDK version. When using Linux set **module_path** to  ```/usr/lib/x86_64-linux-gnu/libk4a.so```, please follow the [instruction](https://github.com/microsoft/Azure-Kinect-Sensor-SDK/blob/develop/docs/usage.md) from microsoft to install the right packages.
+  - **Linux:** When using the pyKinectAzure class, it requires the **path to the k4a.so module**, make sure that the path is the correct one for your Orbbec SDK K4a Wrapper version. First, copy [Orbbec SDK K4a Wrapper linux lib](/orbbecK4aWrapper/lib/linux_x64/*) to [the system path](/usr/lib/x86_64-linux-gnu), then using Linux set **module_path** to  ```/usr/lib/x86_64-linux-gnu/libk4a.so```.
   
-   - **Nvidia Jetson:** When using the pyKinectAzure class, it requires the **path to the k4a.so module**, make sure that the path is the correct one for your Kinect Azure SDK version. When using Nvidia Jetson set **module_path** to to  ```'/usr/lib/aarch64-linux-gnu/libk4a.so'```, please follow the [instruction](https://github.com/microsoft/Azure-Kinect-Sensor-SDK/blob/develop/docs/usage.md) from microsoft to install the right packages.
+   - **TODO：Arm64(Nvidia Orin nano)
 
 * The **pyKinectAzure** class is a wrapper around the **_k4a.py** module to make the library more understandable. However, the **pyKinectAzure** class still contains few methods from the Kinect Azure SDK
 
