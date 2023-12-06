@@ -19,7 +19,6 @@ The objective of this repository is to combine the strong points of both reposit
 
 ## Prerequisites
 * [Orbbec SDK K4a Wrapper](/orbbecK4aWrapper/readme.md): Replace the corresponding libraries of Azure Kinect Sensor SDK with the libraries in the K4a Wrapper directory.
-  To use the SDK, refer to the installation instructions [here](https://github.com/microsoft/Azure-Kinect-Sensor-SDK).
 * **ctypes**: required to read the library.
 * **numpy**: required for the matrix calculations
 * **opencv-python**: Required for the image transformations and visualization.
@@ -50,7 +49,7 @@ pip install pykinect_azure
 
 For an example on how to obtain and visualize the depth data from the Azure Kinect DK check the **exampleDepthImageOpenCV.py** script.
 ```
-git clone https://github.com/ibaiGorordo/pyKinectAzure.git
+git clone https://github.com/orbbec/pyKinectAzure.git
 cd pyKinectAzure/examples
 python exampleDepthImageOpenCV.py
 ```
