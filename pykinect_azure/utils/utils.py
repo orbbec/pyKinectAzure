@@ -18,7 +18,9 @@ def get_k4a_module_path():
         return 'C:\\Program Files\\Azure Kinect SDK v1.4.1\\sdk\\windows-desktop\\amd64\\release\\bin\\k4a.dll'
 
     # Otherwise return the x86 Windows version
-    return 'C:\\Program Files\\Azure Kinect SDK v1.4.1\\sdk\\windows-desktop\\x86\\release\\bin\\k4a.dll'
+    print("Platform not supported")
+    sys.exit(1)
+    #return 'C:\\Program Files\\Azure Kinect SDK v1.4.1\\sdk\\windows-desktop\\x86\\release\\bin\\k4a.dll'
 
 def get_k4abt_module_path():
 
