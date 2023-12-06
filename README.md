@@ -33,7 +33,7 @@ pip install pykinect_azure
 
 * The library has **been tested in Windows 10 and Ubuntu 20.04** with the Kinect Azure SDK 1.4.0 and 1.4.1, it should also work with other operating systems.
 
-  - **Windows:** When using the pyKinectAzure class, it requires the **path to the k4a.dll module**, make sure that the path is the correct one for your Orbbec SDK K4a Wrapper version.  the path (**module_path**) is set to Orbbec SDK K4a Wrapper windows lib path. For Example,Replace the paths in the following image to  ```C:\\pyKinectAzure\\orbbecK4aWrapper\\lib\\windows_x64\\k4a.dll```. 
+  - **Windows:** When using the pyKinectAzure class, it requires the **path to the k4a.dll module**, make sure that the path is the correct one for your Orbbec SDK K4a Wrapper version.  the path (**module_path**) is set to Orbbec SDK K4a Wrapper windows lib path. For Example,If you download the code to the C drive,Replace the paths in the following image to  ```C:\\pyKinectAzure\\orbbecK4aWrapper\\lib\\windows_x64\\k4a.dll```. 
   
   ![Orbbec K4a Wrapper lib path](doc/images/modify_path_to_K4a_wrapper.png)
 
