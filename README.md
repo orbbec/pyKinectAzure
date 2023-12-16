@@ -32,19 +32,17 @@ pip install pykinect_azure
 
 * The library has **been tested in Windows 10 and Ubuntu 20.04** with the Kinect Azure SDK 1.4.0 and 1.4.1, it should also work with other operating systems.
 
-  - **Windows:** When using the pyKinectAzure class, it requires the **path to the k4a.dll module**, make sure that the path is the correct one for your Orbbec SDK K4a Wrapper version.  the path (**module_path**) is set to Orbbec SDK K4a Wrapper windows lib path. For Example,If you download the code to the C drive,Replace the paths in the following image to  ```C:\\pyKinectAzure\\orbbecK4aWrapper\\lib\\windows_x64\\k4a.dll```. 
+  - **Windows:** When using the pyKinectAzure class, it requires the **path to the k4a.dll module**, make sure that the path is the correct one for your Orbbec SDK K4a Wrapper version.  the path (**module_path**) is set to Orbbec SDK K4a Wrapper windows lib path. For Example,If you download the code to the C drive,Replace the paths in the following image to  ```C:\\pyKinectAzure\\orbbecK4aWrapper\\lib\\windows_x64\\k4a.dll```.
+  - Notes: 
+   After modify utils.py,set Orbbec SDK K4a Wrapper lib path, then in the root path, compile and install,using the follow script:  
+   1、python setup.py build 
+   2、python setup.py install
   
   ![Orbbec K4a Wrapper lib path](doc/images/modify_path_to_K4a_wrapper.png)
 
   - **Linux:** When using the pyKinectAzure class, it requires the **path to the k4a.so module**, make sure that the path is the correct one for your Orbbec SDK K4a Wrapper version. First, copy [Orbbec SDK K4a Wrapper linux lib](/orbbecK4aWrapper/lib/linux_x64/*) to [the system path](/usr/lib/x86_64-linux-gnu), then using Linux set **module_path** to  ```/usr/lib/x86_64-linux-gnu/libk4a.so```.
   
    - **TODO：Arm64(Nvidia Orin nano)
- 
-Notes: 
-   After modify utils.py,set Orbbec SDK K4a Wrapper lib path, then in the root path, compile and install,using the follow script:  
-   1、python setup.py build 
-   2、python setup.py install
-
    
 * The **pyKinectAzure** class is a wrapper around the **_k4a.py** module to make the library more understandable. However, the **pyKinectAzure** class still contains few methods from the Kinect Azure SDK
 
