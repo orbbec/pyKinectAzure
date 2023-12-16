@@ -45,12 +45,17 @@ class Body2d:
 	def draw(self, image, only_segments = False):
 
 		color = (int (body_colors[self.id][0]), int (body_colors[self.id][1]), int (body_colors[self.id][2]))
+		# 获取图像的尺寸
+		img_height, img_width = image.shape[:2]
+
 
 		for segmentId in range(len(K4ABT_SEGMENT_PAIRS)):
 			segment_pair = K4ABT_SEGMENT_PAIRS[segmentId]
 			point1 = self.joints[segment_pair[0]].get_coordinates()
 			point2 = self.joints[segment_pair[1]].get_coordinates()
-
+			# 确保坐标是整数，并且在图像范围内
+			point1 = (max(0, min(int(point1[0]), img_width - 1)), max(0, min(int(point1[1]), img_height - 1)))
+			point2 = (max(0, min(int(point2[0]), img_width - 1)), max(0, min(int(point2[1]), img_height - 1)))
 			if (point1[0] == 0 and point1[1] == 0) or (point2[0] == 0 and point2[1] == 0):
 				continue
 			image = cv2.line(image, point1, point2,color, 2)
@@ -59,7 +64,9 @@ class Body2d:
 			return image
 
 		for joint in self.joints:
-			image = cv2.circle(image, joint.get_coordinates(), 3, color, 3)
+			point3 = joint.get_coordinates()
+			point3 = (max(0, min(int(point3[0]), img_width - 1)), max(0, min(int(point3[1]), img_height - 1)))
+			image = cv2.circle(image, point3, 3, color, 3)
 
 		return image
 

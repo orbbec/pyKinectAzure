@@ -32,9 +32,11 @@ if __name__ == "__main__":
 
 		# Get the color image
 		ret_color, color_image = capture.get_color_image()
-
 		# Get the depth image
 		ret_depth, depth_image = capture.get_depth_image()
+
+		if color_image is None or depth_image is None:
+			continue
 
 		# Get the transformed color image
 		ret_transformed_color, transformed_color_image = capture.get_transformed_color_image()
@@ -44,6 +46,9 @@ if __name__ == "__main__":
 
 		# Get the transformed point cloud
 		ret_transformed_point, transformed_points = capture.get_transformed_pointcloud()
+
+		if transformed_color_image is None or transformed_points is None:
+			continue
 
 		if not ret_color or not ret_depth or not ret_point or not ret_transformed_point or not ret_transformed_color:
 			continue
@@ -63,11 +68,12 @@ if __name__ == "__main__":
 			depth = depth_image[int(depth_neck_2d[1]), int(depth_neck_2d[0])]
 			depth_neck_float3 = device.calibration.convert_2d_to_3d(depth_neck_float2, depth, pykinect.K4A_CALIBRATION_TYPE_DEPTH, pykinect.K4A_CALIBRATION_TYPE_DEPTH)
 			depth_transformed_neck_3d = [depth_neck_float3.xyz.x, depth_neck_float3.xyz.y, depth_neck_float3.xyz.z]
-
-			color_neck_3d = transformed_points_map[int(color_neck_2d[1]), int(color_neck_2d[0]), :]
-			depth_neck_3d = points_map[int(depth_neck_2d[1]), int(depth_neck_2d[0]), :]
-			neck_3d = skeleton_3d[pykinect.K4ABT_JOINT_NECK,:3]
-			print(f'Neck 3D coordinates: color = {color_neck_3d}, depth = {depth_neck_3d}, depth converted = {depth_transformed_neck_3d}, body = {neck_3d}')
+			#check whether the coordinates are out of bounds
+			#color_neck_3d = transformed_points_map[int(color_neck_2d[1]), int(color_neck_2d[0]), :]
+			#check whether the coordinates are out of bounds
+			#depth_neck_3d = points_map[int(depth_neck_2d[1]), int(depth_neck_2d[0]), :]
+			#neck_3d = skeleton_3d[pykinect.K4ABT_JOINT_NECK,:3]
+			#print(f'Neck 3D coordinates: color = {color_neck_3d}, depth = {depth_neck_3d}, depth converted = {depth_transformed_neck_3d}, body = {neck_3d}')
 
 
 		# Draw the skeletons into the color image
